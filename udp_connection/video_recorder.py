@@ -8,11 +8,11 @@ from contextlib import suppress
 
 
 class VideoRecorder:
-    def __init__(self, user_id, frame_size=(640, 480), fps=30):
+    def __init__(self, token, frame_size=(640, 480), fps=30):
         self.cap = None
         self.out = None
         self.recording = False
-        self.user_id = user_id
+        self.token = token
         self.frame_size = frame_size
         self.fps = fps
         self.video_name = None
@@ -20,7 +20,7 @@ class VideoRecorder:
     def start_recording(self):
         if self.cap is None:
             now = datetime.now().strftime("%Y%m%d_%H%M%S")
-            self.video_name = f"{self.user_id}_{now}.avi"
+            self.video_name = f"{now}.avi"
             self.cap = cv2.VideoCapture(0)
             fourcc = cv2.VideoWriter_fourcc(*'XVID')
             self.out = cv2.VideoWriter(self.video_name, fourcc, self.fps, self.frame_size)
@@ -54,9 +54,9 @@ class VideoRecorder:
             with suppress(FileNotFoundError, Exception):
                 with open(self.video_name, 'rb') as video_file:
                     files = {'video': video_file}
-                    data = {'user_id': self.user_id}
+                    headers = {'Authorization': f'Bearer {self.token}'}
 
-                    response = requests.post(url, files=files, data=data)
+                    response = requests.post(url, files=files, headers=headers)
                     response.raise_for_status()
 
     def cleanup_video_file(self):

@@ -17,11 +17,11 @@ class UDPSignalReceiver:
                 signal = data.decode('utf-8')
 
                 if signal.startswith("start"):
-                    user_id = signal.split()[1]
+                    token = signal.split()[1]
                     if self.recorder and self.recorder.recording:
                         continue
                     else:
-                        self.recorder = VideoRecorder(user_id)
+                        self.recorder = VideoRecorder(token)
                         self.recorder.start_recording()
                         self.recording_thread = threading.Thread(target=self.recorder.record)
                         self.recording_thread.start()
