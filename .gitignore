@@ -1,0 +1,69 @@
+# Python
+# ------------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.installed.cfg
+*.egg
+.Python
+
+# Environment & virtualenvs
+# ------------------------------
+env/
+.venv/
+bin/
+
+# Distribution / packaging
+# ------------------------------
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+
+# Logs & reports
+# ------------------------------
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+# Django logs
+*.log
+
+# Documentation
+# ------------------------------
+# Sphinx documentation
+docs/_build/
+# Translations
+*.mo
+
+# IDE & editor files
+# ------------------------------
+.idea/
+.vscode/
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+# Rope
+.ropeproject
+
+# Other
+# ------------------------------
+# C extensions
+*.so
+# Media files
+*.mp4
+# Data files
+*.csv
